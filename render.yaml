@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: sistema-facturacion
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run facturacion_inventario.py --server.address 0.0.0.0 --server.port $PORT --server.headless true --server.enableCORS false --server.enableXsrfProtection false
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DATABASE_URL
+        sync: false   # Lo cargás manualmente desde el dashboard de Render
